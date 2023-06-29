@@ -83,3 +83,4 @@ rm -rf /run/k3s
 rm -rf /run/flannel
 rm -rf /var/lib/rancher/k3s
 rm -rf /var/lib/kubelet
+rm -rf /var/lib/rancher/*

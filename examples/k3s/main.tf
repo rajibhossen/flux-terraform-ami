@@ -8,7 +8,7 @@ locals {
   ami           = "ami-077679e63cd2e9248"
   instance_type = "m4.large"
   vpc_cidr      = "10.0.0.0/16"
-  key_name      = "<>"
+  key_name      = "hossen1_flux_k3s"
 
   # Must be larger than ami
   volume_size = 30
@@ -192,7 +192,7 @@ resource "aws_security_group" "security_group" {
     from_port   = 6443
     to_port     = 6443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.cidr_block_a, local.cidr_block_b, local.cidr_block_c]
   }
 
   ingress {
@@ -200,7 +200,7 @@ resource "aws_security_group" "security_group" {
     from_port   = 8472
     to_port     = 8472
     protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.cidr_block_a, local.cidr_block_b, local.cidr_block_c]
   }
 
   ingress {
@@ -208,7 +208,7 @@ resource "aws_security_group" "security_group" {
     from_port   = 10250
     to_port     = 10250
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [local.cidr_block_a, local.cidr_block_b, local.cidr_block_c]
   }
   # END K3S PORTS
 
